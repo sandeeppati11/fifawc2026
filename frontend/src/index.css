@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+}
+
+/* Custom utility classes to hide scrollbars on mobile tab bars */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Stadium light / golden glow animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
+  }
+}
+
+.glow-yellow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Alternating dark & light green grass stripes of a mowed football field */
+.pitch-lawn {
+  background-color: #022c22;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(2, 44, 34, 1),
+    rgba(2, 44, 34, 1) 160px,
+    rgba(4, 58, 44, 1) 160px,
+    rgba(4, 58, 44, 1) 320px
+  );
+}
