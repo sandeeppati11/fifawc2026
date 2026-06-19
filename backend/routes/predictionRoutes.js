@@ -135,4 +135,21 @@ router.get('/stats', async (req, res) => {
   }
 });
 
+/**
+ * @route   GET /api/predictions/admin/all
+ * @desc    Get all predictions with complete details for the admin interface
+ * @access  Public (Admin role via UI)
+ */
+router.get('/admin/all', async (req, res) => {
+  try {
+    const predictions = await Prediction.find()
+      .sort({ createdAt: -1 });
+    res.json(predictions);
+  } catch (err) {
+    console.error('Error retrieving all predictions for admin:', err);
+    res.status(500).json({ error: 'Server error. Failed to load admin prediction list.' });
+  }
+});
+
 module.exports = router;
+

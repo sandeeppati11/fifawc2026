@@ -6,6 +6,7 @@ import Wildcard from './screens/Wildcard';
 import KnockoutStage from './screens/KnockoutStage';
 import Summary from './screens/Summary';
 import Community from './screens/Community';
+import Admin from './screens/Admin';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
@@ -28,7 +29,11 @@ export default function App() {
   // Onboarding Start
   const handleStartOnboarding = (userName) => {
     setName(userName);
-    setScreen('groupstage');
+    if (userName.trim().toLowerCase() === 'admin') {
+      setScreen('admin');
+    } else {
+      setScreen('groupstage');
+    }
   };
 
   // Group Stage Selection Complete
@@ -117,7 +122,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-emerald-950 text-white font-sans overflow-x-hidden">
-      {screen !== 'onboarding' && (
+      {screen !== 'onboarding' && screen !== 'admin' && (
         <Navbar
           currentScreen={screen}
           userName={name}
@@ -164,6 +169,9 @@ export default function App() {
         )}
         {screen === 'community' && (
           <Community onBack={handleBackFromCommunity} />
+        )}
+        {screen === 'admin' && (
+          <Admin onBack={handleReset} />
         )}
       </div>
     </div>

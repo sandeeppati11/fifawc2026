@@ -154,86 +154,131 @@ export default function Summary({ name, groupRankings, wildcardPicks, knockoutBr
       <div className="absolute left-[-9999px] top-[-9999px]">
         <div 
           ref={printRef}
-          style={{ width: '800px', padding: '40px', backgroundColor: '#022c22', color: '#ffffff', fontFamily: 'sans-serif' }}
+          style={{ width: '800px', padding: '25px 30px', backgroundColor: '#022c22', color: '#ffffff', fontFamily: 'sans-serif' }}
           className="rounded-3xl border-8 border-double border-yellow-400 text-left"
         >
           {/* Certificate Header */}
-          <div className="text-center border-b-2 border-emerald-800 pb-6 mb-8">
-            <h1 style={{ fontSize: '32px', margin: '0 0 10px 0', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#fbbf24' }}>
+          <div className="text-center border-b-2 border-emerald-800 pb-3 mb-4">
+            <h1 style={{ fontSize: '26px', margin: '0 0 5px 0', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#fbbf24' }}>
               FIFA World Cup 2026 Predictions
             </h1>
-            <p style={{ fontSize: '14px', margin: '0', color: '#a7f3d0', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
+            <p style={{ fontSize: '11px', margin: '0', color: '#a7f3d0', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>
               Official Prediction Certificate
             </p>
-            <div style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '15px', color: '#ffffff' }}>
+            <div style={{ fontSize: '16px', fontWeight: 'bold', marginTop: '10px', color: '#ffffff' }}>
               PREDICTED BY: <span style={{ color: '#fbbf24', textDecoration: 'underline' }}>{name.toUpperCase()}</span>
             </div>
           </div>
 
-          {/* Podiums Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '30px' }}>
-            <div style={{ backgroundColor: 'rgba(251,191,36,0.1)', border: '2px solid #fbbf24', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '30px', marginBottom: '5px' }}>🥇</div>
-              <div style={{ fontSize: '11px', fontWeight: '900', color: '#fbbf24', textTransform: 'uppercase', marginBottom: '5px' }}>Champion</div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#ffffff', textTransform: 'uppercase' }}>{champion}</div>
-            </div>
-            
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid #94a3b8', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '30px', marginBottom: '5px' }}>🥈</div>
-              <div style={{ fontSize: '11px', fontWeight: '900', color: '#cbd5e1', textTransform: 'uppercase', marginBottom: '5px' }}>Runner-Up</div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#ffffff', textTransform: 'uppercase' }}>{runnerUp}</div>
-            </div>
+          {/* Podiums Table */}
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '15px', color: '#ffffff', fontFamily: 'sans-serif', fontSize: '11px' }}>
+            <thead>
+              <tr style={{ borderBottom: '2px solid #fbbf24', textAlign: 'left', backgroundColor: '#064e3b' }}>
+                <th style={{ padding: '6px 8px', fontWeight: '900', color: '#fbbf24', textTransform: 'uppercase', width: '25%' }}>Position</th>
+                <th style={{ padding: '6px 8px', fontWeight: '900', color: '#fbbf24', textTransform: 'uppercase', width: '50%' }}>Predicted Team</th>
+                <th style={{ padding: '6px 8px', fontWeight: '900', color: '#fbbf24', textTransform: 'uppercase', width: '25%' }}>Award</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: '1px solid rgba(251,191,36,0.3)', backgroundColor: 'rgba(251,191,36,0.05)' }}>
+                <td style={{ padding: '6px 8px', fontWeight: '900', color: '#fbbf24' }}>🥇 CHAMPION</td>
+                <td style={{ padding: '6px 8px', fontWeight: '900', textTransform: 'uppercase', fontSize: '13px', color: '#ffffff' }}>{champion}</td>
+                <td style={{ padding: '6px 8px', fontWeight: 'bold', color: '#fbbf24' }}>Gold Trophy</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid rgba(203,213,225,0.3)', backgroundColor: 'rgba(255,255,255,0.02)' }}>
+                <td style={{ padding: '6px 8px', fontWeight: '900', color: '#cbd5e1' }}>🥈 RUNNER-UP</td>
+                <td style={{ padding: '6px 8px', fontWeight: '900', textTransform: 'uppercase', fontSize: '13px', color: '#ffffff' }}>{runnerUp}</td>
+                <td style={{ padding: '6px 8px', fontWeight: 'bold', color: '#cbd5e1' }}>Silver Medal</td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid rgba(245,158,11,0.3)', backgroundColor: 'rgba(180,83,9,0.03)' }}>
+                <td style={{ padding: '6px 8px', fontWeight: '900', color: '#f59e0b' }}>🥉 THIRD PLACE</td>
+                <td style={{ padding: '6px 8px', fontWeight: '900', textTransform: 'uppercase', fontSize: '13px', color: '#ffffff' }}>{thirdPlace}</td>
+                <td style={{ padding: '6px 8px', fontWeight: 'bold', color: '#f59e0b' }}>Bronze Medal</td>
+              </tr>
+            </tbody>
+          </table>
 
-            <div style={{ backgroundColor: 'rgba(180,83,9,0.1)', border: '2px solid #b45309', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
-              <div style={{ fontSize: '30px', marginBottom: '5px' }}>🥉</div>
-              <div style={{ fontSize: '11px', fontWeight: '900', color: '#f59e0b', textTransform: 'uppercase', marginBottom: '5px' }}>Third Place</div>
-              <div style={{ fontSize: '18px', fontWeight: '900', color: '#ffffff', textTransform: 'uppercase' }}>{thirdPlace}</div>
-            </div>
-          </div>
-
-          {/* Detailed Path Info */}
-          <div style={{ backgroundColor: '#064e3b', border: '1px solid #065f46', borderRadius: '15px', padding: '20px', marginBottom: '20px' }}>
-            <h3 style={{ fontSize: '14px', margin: '0 0 12px 0', textTransform: 'uppercase', color: '#fbbf24', borderBottom: '1px solid #065f46', paddingBottom: '8px' }}>
+          {/* Detailed Path Info (Wildcards Table) */}
+          <div style={{ backgroundColor: '#064e3b', border: '1px solid #065f46', borderRadius: '15px', padding: '12px 15px', marginBottom: '15px' }}>
+            <h3 style={{ fontSize: '12px', margin: '0 0 8px 0', textTransform: 'uppercase', color: '#fbbf24', borderBottom: '1px solid #065f46', paddingBottom: '6px', fontWeight: '900' }}>
               Qualified Wildcard Teams (Best 3rd Place)
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
-              {wildcardPicks.map((wName, idx) => (
-                <div key={wName} style={{ fontSize: '12px', fontWeight: 'bold', padding: '8px', backgroundColor: '#022c22', border: '1px solid #10b981', borderRadius: '8px', textAlign: 'center' }}>
-                  #{idx + 1} • {wName}
-                </div>
-              ))}
-            </div>
+            <table style={{ width: '100%', borderCollapse: 'collapse', color: '#ffffff', fontSize: '11px' }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid #34d399', textAlign: 'left', backgroundColor: 'rgba(2,44,34,0.4)' }}>
+                  <th style={{ padding: '4px 8px', fontWeight: '900', color: '#34d399', textTransform: 'uppercase', width: '15%' }}>Rank</th>
+                  <th style={{ padding: '4px 8px', fontWeight: '900', color: '#34d399', textTransform: 'uppercase', width: '35%' }}>Team</th>
+                  <th style={{ padding: '4px 8px', fontWeight: '900', color: '#34d399', textTransform: 'uppercase', width: '15%' }}>Rank</th>
+                  <th style={{ padding: '4px 8px', fontWeight: '900', color: '#34d399', textTransform: 'uppercase', width: '35%' }}>Team</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[0, 1, 2, 3].map((rowIdx) => (
+                  <tr key={rowIdx} style={{ borderBottom: '1px solid rgba(16,185,129,0.1)', backgroundColor: rowIdx % 2 === 0 ? 'rgba(2,44,34,0.2)' : 'transparent' }}>
+                    <td style={{ padding: '5px 8px', fontWeight: 'bold', color: '#fbbf24' }}>#{rowIdx + 1}</td>
+                    <td style={{ padding: '5px 8px' }}>{wildcardPicks[rowIdx]}</td>
+                    <td style={{ padding: '5px 8px', fontWeight: 'bold', color: '#fbbf24' }}>#{rowIdx + 5}</td>
+                    <td style={{ padding: '5px 8px' }}>{wildcardPicks[rowIdx + 4]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          {/* Group Winners Table */}
-          <div style={{ backgroundColor: '#064e3b', border: '1px solid #065f46', borderRadius: '15px', padding: '20px' }}>
-            <h3 style={{ fontSize: '14px', margin: '0 0 12px 0', textTransform: 'uppercase', color: '#fbbf24', borderBottom: '1px solid #065f46', paddingBottom: '8px' }}>
-              Group Stage Standings (Top 3)
+          {/* Group Winners Table (2-column layout) */}
+          <div style={{ backgroundColor: '#064e3b', border: '1px solid #065f46', borderRadius: '15px', padding: '12px 15px' }}>
+            <h3 style={{ fontSize: '12px', margin: '0 0 8px 0', textTransform: 'uppercase', color: '#fbbf24', borderBottom: '1px solid #065f46', paddingBottom: '6px', fontWeight: '900' }}>
+              Group Stage Standings (Top 3 Rankings)
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
               {/* Column 1 */}
-              <div>
-                {groupRankings.slice(0, 6).map((gr) => (
-                  <div key={gr.group} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(16,185,129,0.15)', fontSize: '12px' }}>
-                    <span style={{ fontWeight: 'bold', color: '#34d399' }}>Group {gr.group}:</span>
-                    <span>{gr.rankings.join(' > ')}</span>
-                  </div>
-                ))}
-              </div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', color: '#ffffff', fontSize: '10.5px' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1.5px solid #fbbf24', textAlign: 'left', backgroundColor: 'rgba(2,44,34,0.4)' }}>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>Group</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥇 1st</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥈 2nd</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥉 3rd</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {groupRankings.slice(0, 6).map((gs, idx) => (
+                    <tr key={gs.group} style={{ borderBottom: '1px solid rgba(16,185,129,0.15)', backgroundColor: idx % 2 === 0 ? 'rgba(2,44,34,0.25)' : 'transparent' }}>
+                      <td style={{ padding: '5px 6px', fontWeight: 'bold', color: '#34d399' }}>Group {gs.group}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[0]}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[1]}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
               {/* Column 2 */}
-              <div>
-                {groupRankings.slice(6, 12).map((gr) => (
-                  <div key={gr.group} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(16,185,129,0.15)', fontSize: '12px' }}>
-                    <span style={{ fontWeight: 'bold', color: '#34d399' }}>Group {gr.group}:</span>
-                    <span>{gr.rankings.join(' > ')}</span>
-                  </div>
-                ))}
-              </div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', color: '#ffffff', fontSize: '10.5px' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1.5px solid #fbbf24', textAlign: 'left', backgroundColor: 'rgba(2,44,34,0.4)' }}>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>Group</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥇 1st</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥈 2nd</th>
+                    <th style={{ padding: '4px 6px', fontWeight: '950', color: '#fbbf24', textTransform: 'uppercase' }}>🥉 3rd</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {groupRankings.slice(6, 12).map((gs, idx) => (
+                    <tr key={gs.group} style={{ borderBottom: '1px solid rgba(16,185,129,0.15)', backgroundColor: idx % 2 === 0 ? 'rgba(2,44,34,0.25)' : 'transparent' }}>
+                      <td style={{ padding: '5px 6px', fontWeight: 'bold', color: '#34d399' }}>Group {gs.group}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[0]}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[1]}</td>
+                      <td style={{ padding: '5px 6px' }}>{gs.rankings[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
 
           {/* Footer watermark */}
-          <div style={{ marginTop: '40px', textAlign: 'center', fontSize: '10px', color: '#047857', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold' }}>
+          <div style={{ marginTop: '20px', textAlign: 'center', fontSize: '9px', color: '#047857', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold' }}>
             FIFA World Cup 2026 Prediction System • Verified Complete
           </div>
         </div>
